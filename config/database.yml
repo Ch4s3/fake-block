@@ -1,0 +1,13 @@
+development:
+  adapter: postgresql
+  database: fake_block_dev_db
+
+
+test: &test
+  adapter: postgresql
+  database: fake_block_test_db
+
+
+production:
+  adapter: postgresql
+  database: fake_block_prod_db
