@@ -1,2 +1,19 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+.row
+  .small-2.large-2.columns
+    text
+  .small-6.large-8.columns
+    .title
+      %h1 Recent Blocks
+    .blocks
+      .new-block
+        =form_for @block do |f|
+          .field
+            %p post something interesting
+            = f.text_area :slab
+          .actions
+            = f.submit 'Post'
+      -@blocks.each do |block|
+        .block
+          =block.slab
+  .small-4.large-2.columns
+    other content
