@@ -11,6 +11,7 @@ To run locally, set up ruby, rails and postgres
     use the database.sample.yml as a guide to config your Database
     gem install rails
     rvm install jruby
+    rake db:create (if you haven't)
     bundle
     rake db:migrate
     rails s
