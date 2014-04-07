@@ -5,11 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :blocks
   
-  ROLES = %w[admin moderator user]
-  
-  def role_symbols
-    [role.to_sym]
-  end
+  ROLES = %w[administrator moderator user]
 
   def has_role?(role)
     roles.include? role.to_s
