@@ -19,6 +19,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'puma'
 gem 'pg'
 gem 'cancan'
+gem 'role_model'
 
 group :development, :test do
   gem 'better_errors'
