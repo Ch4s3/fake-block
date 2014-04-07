@@ -17,6 +17,7 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'puma'
+gem 'pg'
 
 group :development, :test do
   gem 'better_errors'
