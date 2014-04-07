@@ -12,6 +12,10 @@ class Ability
       can :update, Block do |block|
         block.try(:user) == user || user.role?(:moderator)
       end
+      can :create, Comment
+      can :update, Comment do |comment|
+        comment.try(:user) == user || user.role?(:moderator)
+      end
     end
   end
 end
