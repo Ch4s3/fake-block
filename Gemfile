@@ -18,6 +18,7 @@ gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'puma'
 gem 'pg'
+gem 'cancan'
 
 group :development, :test do
   gem 'better_errors'
