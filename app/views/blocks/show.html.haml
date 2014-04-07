@@ -3,9 +3,10 @@
 %p
   %b Slab:
   = @block.slab
-%p
-  %b Usr:
-  = @block.usr_id
+-if @block.user_id.present?
+  %p
+    %b User:
+    = @block.user_id
 
 = link_to 'Edit', edit_block_path(@block)
 \|
