@@ -1,58 +1,20 @@
-Fake Block V2
-========================
+== README
 
-This application was generated with the rails_apps_composer gem:
-https://github.com/RailsApps/rails_apps_composer
-provided by the RailsApps Project:
-http://railsapps.github.io/
+This is a standard rails app
 
-________________________
+* Ruby version: jruby 1.7.10
+* Rails version: 4.0.2
+* Postgres
 
-Recipes:
+To run locally, set up ruby, rails and postgres
+    http://www.postgresql.org/download/ --download and follow the guide
+    use the database.sample.yml as a guide to config your Database
+    gem install rails
+    rvm install jruby
+    bundle
+    rake db:migrate
+    rails s
 
-* apps4
-* controllers
-* core
-* email
-* extras
-* frontend
-* gems
-* git
-* init
-* models
-* prelaunch
-* railsapps
-* readme
-* routes
-* saas
-* setup
-* testing
-* views
+Visit in browser: localhost:3000/
 
-Preferences:
-
-* git: true
-* apps4: none
-* dev_webserver: puma
-* prod_webserver: puma
-* database: postgresql
-* templates: haml
-* unit_test: rspec
-* integration: rspec-capybara
-* continuous_testing: guard
-* fixtures: none
-* frontend: bootstrap3
-* email: gmail
-* authentication: devise
-* devise_modules: default
-* authorization: cancan
-* form_builder: none
-* starter_app: admin_app
-* rvmrc: false
-* local_env_file: figaro
-* better_errors: true
-* ban_spiders: true
-
-________________________
-
-License
+rake db:reset is also useful
