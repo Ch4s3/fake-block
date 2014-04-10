@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Body:
+  = @block.body
+%p
+  %b User:
+  = @block.user_id
+
+= link_to 'Edit', edit_block_path(@block)
+\|
+= link_to 'Back', blocks_path
