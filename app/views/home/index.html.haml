@@ -2,10 +2,11 @@
 .col-md-4
   %h3 Home
   -if @user.present?
-    =form_for @block do |f|
+    =form_for @block, :url => blocks_path, :html => { :multipart => true } do |f|
       .form-group
         =f.text_area :body, :class => 'form-control'
         =hidden_field_tag :user_id, @user.id
+        =f.file_field :image
       .form-group
         =f.submit "Post", :class => 'btn btn-default'
   -else
@@ -15,7 +16,9 @@
       -@blocks.sort {|a,b| b.created_at <=> a.created_at }.each do |block|
         %tr
           .block.panel
-            %p=block.created_at.strftime("posted at %I:%M%p on %b/%d/%y") 
+            %p=block.created_at.strftime("posted at %I:%M%p on %b/%d/%y")
+            -if block.image.present?
+              =image_tag block.image.url(:medium)
             %p=block.body
             -if block.user_id = @user.id
               = link_to 'Edit', edit_block_path(block)
