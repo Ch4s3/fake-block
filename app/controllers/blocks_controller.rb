@@ -69,6 +69,6 @@ class BlocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def block_params
-      params.require(:block).permit(:body, :user_id)
+      params.require(:block).permit(:body, :user_id, :image)
     end
 end

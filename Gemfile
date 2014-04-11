@@ -12,6 +12,7 @@ gem 'cancan'
 gem 'devise'
 gem 'figaro'
 gem 'haml-rails'
+gem "paperclip", "~> 4.1"
 gem 'pg'
 gem 'puma'
 gem 'rolify'
