@@ -19,7 +19,7 @@
       -@blocks.sort {|a,b| b.created_at <=> a.created_at }.each do |block|
         %tr
           .block.panel
-            %p=block.created_at.strftime("posted at %I:%M%p on %b/%d/%y")
+            %p="#{time_ago_in_words(block.created_at)} ago"
             -if block.image.present?
               =image_tag block.image.url(:medium)
             %p=block.body
