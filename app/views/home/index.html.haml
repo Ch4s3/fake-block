@@ -1,16 +1,19 @@
 .col-md-4
 .col-md-4
-  %h3 Home
-  -if @user.present?
-    =form_for @block, :url => blocks_path, :html => { :multipart => true } do |f|
-      .form-group
-        =f.text_area :body, :class => 'form-control'
-        =hidden_field_tag :user_id, @user.id
-        =f.file_field :image
-      .form-group
-        =f.submit "Post", :class => 'btn btn-default'
-  -else
-    %h5 log in to post
+  .panel.post
+    %h4 post something
+    -if @user.present?
+      =form_for @block, :url => blocks_path, :html => { :multipart => true } do |f|
+        .form-group
+          =f.text_area :body, :class => 'form-control'
+          =f.hidden_field :user_id, value: @user.id
+          .form-group.one-rem-down
+            =label_tag 'block[image]', "", :class => 'btn btn-primary glyphicon glyphicon-upload upload-button'
+            =f.file_field :image, :class => 'hide'
+        
+            =f.submit "Post", :class => 'btn btn-default'
+    -else
+      %h5 log in to post
   %table
     %tbody
       -@blocks.sort {|a,b| b.created_at <=> a.created_at }.each do |block|
@@ -20,10 +23,8 @@
             -if block.image.present?
               =image_tag block.image.url(:medium)
             %p=block.body
-            -if block.user_id = @user.id
-              = link_to 'Edit', edit_block_path(block)
-              = link_to 'Destroy', block, :method => :delete, :data => { :confirm => 'Are you sure?' }
-            -else
-
-
+            -if @user.present?
+              -if block.user_id = @user.id
+                = link_to '', edit_block_path(block), :class => 'glyphicon glyphicon-edit'
+                = link_to '', block, :method => :delete, :data => { :confirm => 'Delete permanently?' }, :class => 'glyphicon glyphicon-remove-circle'
 .col-md-4
