@@ -2,7 +2,7 @@ README
 
 This is a standard rails app
 
-* Ruby version: ruby 2.0.0
+* Ruby version: ruby 2.1.0
 * Rails version: 4.0.2
 * Postgres
 
