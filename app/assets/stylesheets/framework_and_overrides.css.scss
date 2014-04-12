@@ -5,7 +5,9 @@
 //= depend_on_asset "bootstrap/glyphicons-halflings-regular.woff"
 
 // import the CSS framework
+@import "flat-ui/variables";
 @import "bootstrap";
+@import "flat-ui";
 
 // make all images responsive by default
 img {

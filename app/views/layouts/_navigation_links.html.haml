@@ -1,0 +1,18 @@
+- if user_signed_in?
+  %li
+    = link_to edit_user_registration_path do
+      edit account
+      .fa.fa-edit
+  %li
+    = link_to destroy_user_session_path, :method=>'delete' do
+      log out
+      .fa.fa-sign-out
+- else
+  %li
+    = link_to new_user_session_path do
+      log in
+      .fa.fa-sign-in
+
+  %li= link_to 'Sign up', new_user_registration_path
+- if current_user.present? && current_user.has_role?(:admin)
+  %li= link_to 'Users', users_path
