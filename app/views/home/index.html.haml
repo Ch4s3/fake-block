@@ -8,10 +8,12 @@
           =f.text_area :body, :class => 'form-control'
           =f.hidden_field :user_id, value: @user.id
           .form-group.one-rem-down
-            =label_tag 'block[image]', "", :class => 'btn btn-primary glyphicon glyphicon-upload upload-button'
+            =label_tag( 'block[image]', "", :class => 'btn btn-primary') do
+              .fa.fa-camera-retro.fa-lg
             =f.file_field :image, :class => 'hide'
-        
-            =f.submit "Post", :class => 'btn btn-default'
+            = button_tag(:type => 'submit', :class => 'btn btn-default') do
+              Post
+              .fa.fa-share
     -else
       %h5 log in to post
   %table
@@ -23,8 +25,9 @@
             -if block.image.present?
               =image_tag block.image.url(:medium)
             %p=block.body
-            -if @user.present?
-              -if block.user_id = @user.id
-                = link_to '', edit_block_path(block), :class => 'glyphicon glyphicon-edit'
-                = link_to '', block, :method => :delete, :data => { :confirm => 'Delete permanently?' }, :class => 'glyphicon glyphicon-remove-circle'
+            -if @user.present? && block.user_id = @user.id
+              = link_to edit_block_path(block) do
+                .fa.fa-edit
+              = link_to block, :method => :delete, :data => { :confirm => 'Delete permanently?' } do
+                .fa.fa-times-circle-o
 .col-md-4
