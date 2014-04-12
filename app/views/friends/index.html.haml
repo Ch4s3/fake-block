@@ -1,0 +1,24 @@
+My Friends:
+- unless @user == current_user
+  You do not have permission to access this page!
+- else
+  %ul
+  %li 
+    Current Friends:
+    =render 'friends/friends'
+  %li 
+    Requested Friends:
+    =render 'friends/requested_friends'
+  %li 
+    Pending Friends:
+    -# =render 'friends/pending_friends'
+    - unless @user.pending_friends.empty?
+      - @user.pending_friends.each do |u|
+        -# = link_to u.login, user_path(u.id)
+        %p=u.name
+        Since #{u.created_at.to_s(:long)}
+        - if @user = current_user
+          = link_to '[Accept]', user_friend_path(:user_id => current_user, :id => u), :method => :put, :confirm => 'Accept friend request! Are you sure?'
+        -#   = link_to '[Reject]', user_friend_path(:user_id => current_user, :id => u), :method => :delete, :confirm => 'Reject friend request! Are you sure?'}
+    - else
+      None

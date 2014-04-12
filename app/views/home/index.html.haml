@@ -23,9 +23,9 @@
           .block.panel
             %p="#{time_ago_in_words(block.created_at)} ago"
             -if block.image.present?
-              .block-image{"data-target" => ".bs-example-modal-lg", "data-toggle" => "modal"}
+              .block-image{"data-target" => ".modal_#{block.id}", "data-toggle" => "modal"}
                 =image_tag block.image.url(:medium)
-              .modal.fade.bs-example-modal-lg{"aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", role: "dialog", tabindex: "-1"}
+              .modal.fade.bs-example-modal-lg{class: "modal_#{block.id}","aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", role: "dialog", tabindex: "-1"}
                 .modal-dialog.modal-lg
                   .modal-content 
                     =image_tag block.image.url

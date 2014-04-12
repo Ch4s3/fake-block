@@ -1,5 +1,9 @@
 - if user_signed_in?
   %li
+    = link_to user_path(current_user.id) do
+      profile
+      .fa.fa-user
+  %li
     = link_to edit_user_registration_path do
       edit account
       .fa.fa-edit
