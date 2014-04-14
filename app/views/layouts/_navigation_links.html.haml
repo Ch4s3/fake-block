@@ -1,12 +1,43 @@
 - if user_signed_in?
   %li
     = link_to user_path(current_user.id) do
-      profile
+      =current_user.name
       .fa.fa-user
   %li
     = link_to edit_user_registration_path do
       edit account
       .fa.fa-edit
+  %li
+    .btn-group.friend-btn
+      %button.btn.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
+        %span.fa.fa-users
+      %ul.dropdown-menu{role: "menu"}
+        %li
+          %a
+            =link_to user_friends_path(current_user.id) do
+              friends list
+              .fa.fa-list-alt
+        %li.divider
+        %li 
+          %a pending
+          %ul
+            - unless current_user.pending_friends.empty?
+              - current_user.pending_friends.each do |u|
+                .row
+                  .col-xs-12
+                    %a.pedning-friend
+                      =u.name
+                      =link_to user_friend_path(:user_id => current_user, :id => u), :method => :put, :confirm => 'Accept friend request! Are you sure?' do
+                        .fa.fa-plus-square.fa-lg.two-rems-right
+                      =link_to user_friend_path(:user_id => current_user, :id => u), :method => :delete, :confirm => 'Reject friend request! Are you sure?' do
+                        .fa.fa-minus-square.fa-lg.one-rem-right
+          
+            -else
+              %li
+                %a no pedning friend requests
+        %li.divider
+        %li
+          %a People you may know
   %li
     = link_to destroy_user_session_path, :method=>'delete' do
       log out
