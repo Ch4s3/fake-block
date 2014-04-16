@@ -39,7 +39,7 @@
                     =image_tag block.image.url(:medium)
                   .modal.fade.bs-example-modal-lg{class: "modal_#{block.id}","aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", role: "dialog", tabindex: "-1"}
                     .modal-dialog.modal-lg
-                      .modal-content 
+                      .modal-content
                         =image_tag block.image.url
             .row
               .col-xs-12
@@ -55,10 +55,20 @@
                   .fa.fa-chevron-down
               
               .col-xs-3
+                %p
+                =block.body
+                =block.comments.each.do |comment|
+                  %p=comment.body
+              .col-xs-8
                 -if @user.present? && block.user_id = @user.id
                   = link_to edit_block_path(block) do
                     .fa.fa-edit
                   = link_to block, :method => :delete, :data => { :confirm => 'Delete permanently?' } do
                     .fa.fa-times-circle-o 
-                         
+
+            =form_for @comment do |f|
+              =f.text_area :body
+              =f.hidden_field :block_id, value: @block.id
+              =f.hidden_field :user_id, value: @user.id
+              =f.submit
 .col-md-4

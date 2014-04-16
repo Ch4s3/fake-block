@@ -12,4 +12,6 @@ FakeBlockV2::Application.routes.draw do
   resources :users do
     resources :friends
   end
+
+  resources :comments
 end
