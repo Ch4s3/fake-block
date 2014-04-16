@@ -1,12 +1,23 @@
 class CommentsController < ApplicationController
+  
+  def new
+    @comment = Comment.new
+  end
+
   def create
+    binding.pry
     @comment = Comment.new(comment_params)
-    @comment.block_id = params[:block_id]
-    @comment.user_id = params[:user_id]
+    if @comment.save
+      flash[:success] = "Successfully commented"
+      redirect_to  @comment
+    else
+      flash[:error] = "Please fill out the comment body"
+      redirect_to root_path
+    end  
+  end
 
-    @comment.save
-
-    redirect_to blocks_url
+  def show
+    @comment = Comment.find params[:id]
   end
 
   def comment_params
