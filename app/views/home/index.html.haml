@@ -1,5 +1,8 @@
-.col-md-4
-.col-md-4
+.col-md-3
+  #wrapper
+    =render 'users/profile'
+.col-md-6
+  = render 'layouts/messages'
   .panel.post
     -if @user.present?
       %h4 post something
@@ -89,9 +92,7 @@
                         comment
                         .fa.fa-share
 
-
-
-.col-md-4
+.col-md-3
 
 :javascript
 $(function () {
