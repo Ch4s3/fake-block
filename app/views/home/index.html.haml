@@ -18,7 +18,7 @@
       %h5 log in to post
   %table
     %tbody
-      -@blocks.sort {|a,b| b.created_at <=> a.created_at }.each do |block|
+      -@blocks.order(:cached_votes_up).reverse.each do |block|
         -poster = User.find(block.user_id)
         %tr
           .block.panel
