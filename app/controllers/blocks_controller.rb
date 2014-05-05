@@ -21,13 +21,13 @@ class BlocksController < ApplicationController
   def upvote
     @block = Block.find(params[:id])
     @block.upvote_from current_user
-    redirect_to @block
+    redirect_to :back
   end
   
   def downvote
     @block = Block.find(params[:id])
     @block.downvote_from current_user
-    redirect_to @block
+    redirect_to :back
   end
 
   # GET /blocks/1/edit
