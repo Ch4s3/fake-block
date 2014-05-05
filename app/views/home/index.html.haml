@@ -23,10 +23,15 @@
         %tr
           .block.panel
             .row
-              .col-xs-6
-                %p="#{time_ago_in_words(block.created_at)} ago"
-              .col-xs-3.block-user-name
+              .col-xs-1.block-user-name
                 =link_to "#{poster.name}", user_path(poster.id)
+              .col-xs-1
+                %p=""
+              .col-xs-1
+                ="-"
+              .col-xs-8
+                %p="#{time_ago_in_words(block.created_at)} ago"
+              
             .row
               .col-xs-12
                 -if block.image.present?
@@ -40,10 +45,20 @@
               .col-xs-12
                 %p=block.body
             .row
-              .col-xs-8
+              .col-xs-1  
+                %p="#{block.get_upvotes.size}"
+              .col-xs-5
+                = link_to upvote_block_path(block), method: :put do
+                  .fa.fa-chevron-up
+                ="|"
+                = link_to downvote_block_path(block), method: :put do
+                  .fa.fa-chevron-down
+              
+              .col-xs-3
                 -if @user.present? && block.user_id = @user.id
                   = link_to edit_block_path(block) do
                     .fa.fa-edit
                   = link_to block, :method => :delete, :data => { :confirm => 'Delete permanently?' } do
-                    .fa.fa-times-circle-o
+                    .fa.fa-times-circle-o 
+                         
 .col-md-4

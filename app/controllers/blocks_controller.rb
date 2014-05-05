@@ -1,5 +1,6 @@
 class BlocksController < ApplicationController
   before_action :set_block, only: [:show, :edit, :update, :destroy]
+  
 
   # GET /blocks
   # GET /blocks.json
@@ -16,6 +17,18 @@ class BlocksController < ApplicationController
   def new
     @block = Block.new
   end
+  
+  def upvote
+    @block = Block.find(params[:id])
+    @block.upvote_from current_user
+    redirect_to @block
+  end
+  
+  def downvote
+    @block = Block.find(params[:id])
+    @block.downvote_from current_user
+    redirect_to @block
+  end
 
   # GET /blocks/1/edit
   def edit
@@ -25,7 +38,6 @@ class BlocksController < ApplicationController
   # POST /blocks.json
   def create
     @block = Block.new(block_params)
-
     respond_to do |format|
       if @block.save
         format.html { redirect_to @block, notice: 'Block was successfully created.' }
@@ -69,6 +81,6 @@ class BlocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def block_params
-      params.require(:block).permit(:body, :user_id, :image)
+      params.require(:block).permit(:body, :user_id, :image, :name)
     end
 end
