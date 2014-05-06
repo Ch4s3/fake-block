@@ -40,7 +40,7 @@ class BlocksController < ApplicationController
     @block = Block.new(block_params)
     respond_to do |format|
       if @block.save
-        format.html { redirect_to @block, notice: 'Block was successfully created.' }
+        format.html { redirect_to :back, notice: 'Block was successfully created.' }
         format.json { render action: 'show', status: :created, location: @block }
       else
         format.html { render action: 'new' }
