@@ -39,6 +39,17 @@ ActiveRecord::Schema.define(version: 20140505233446) do
   add_index "blocks", ["cached_votes_up"], name: "index_blocks_on_cached_votes_up", using: :btree
   add_index "blocks", ["cached_weighted_score"], name: "index_blocks_on_cached_weighted_score", using: :btree
 
+  create_table "comments", force: true do |t|
+    t.text     "body"
+    t.integer  "block_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["block_id"], name: "index_comments_on_block_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
   create_table "friendships", force: true do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
@@ -72,6 +83,10 @@ ActiveRecord::Schema.define(version: 20140505233446) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

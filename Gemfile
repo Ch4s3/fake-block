@@ -12,6 +12,7 @@ gem 'flat-ui-sass', github: 'wingrunr21/flat-ui-sass'
 gem 'font-awesome-rails'
 gem 'cancan'
 gem 'devise'
+gem 'acts_as_votable', '~> 0.9.0'
 gem 'figaro'
 gem 'haml-rails'
 gem "paperclip", "~> 4.1"
