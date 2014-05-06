@@ -43,7 +43,6 @@
                         =image_tag block.image.url
             .row
               .col-xs-12
-<<<<<<< HEAD
                 %p=block.body
             .row
               .col-xs-1  
@@ -55,29 +54,10 @@
                 = link_to downvote_block_path(block), method: :put do
                   .fa.fa-chevron-down
               .col-xs-3.pull-right
-=======
-                %p
-                =block.body
-                -block.comments.each do |comment|
-                  %p=comment.body
-
-                =form_for @comment do |f|
-                  .form-group
-                    =f.label :comment
-                    =f.text_area :body, :class => 'form-control'
-                    =f.hidden_field :block_id, value: block.id
-                    =f.hidden_field :user_id, value: current_user.id
-                    .form-group.one-rem-down
-                      = button_tag(:type => 'submit', :class => 'btn btn-default') do
-                        comment
-                        .fa.fa-share
-              .col-xs-8
->>>>>>> 875357e682582352de86fad9a6719ea9a571738d
                 -if @user.present? && block.user_id = @user.id
                   = link_to edit_block_path(block) do
                     .fa.fa-edit
                   = link_to block, :method => :delete, :data => { :confirm => 'Delete permanently?' } do
-<<<<<<< HEAD
                     .fa.fa-times-circle-o 
             .row
               .col-xs-12
@@ -110,9 +90,6 @@
                         .fa.fa-share
 
 
-=======
-                    .fa.fa-times-circle-o
->>>>>>> 875357e682582352de86fad9a6719ea9a571738d
 
 .col-md-4
 
