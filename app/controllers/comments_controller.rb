@@ -5,11 +5,10 @@ class CommentsController < ApplicationController
   end
 
   def create
-    binding.pry
     @comment = Comment.new(comment_params)
     if @comment.save
       flash[:success] = "Successfully commented"
-      redirect_to  @comment
+      redirect_to :back
     else
       flash[:error] = "Please fill out the comment body"
       redirect_to root_path
