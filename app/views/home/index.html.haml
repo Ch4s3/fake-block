@@ -1,5 +1,8 @@
-.col-md-4
-.col-md-4
+.col-md-3
+  #wrapper
+    =render 'users/profile'
+.col-md-6
+  = render 'layouts/messages'
   .panel.post
     -if @user.present?
       %h4 post something
@@ -7,7 +10,7 @@
         .form-group
           =f.text_area :body, :class => 'form-control'
           =f.hidden_field :user_id, value: @user.id
-          .form-group.one-rem-down
+          .form-group.pad-top-1
             =label_tag( 'block[image]', "", :class => 'btn btn-primary') do
               .fa.fa-camera-retro.fa-lg
             =f.file_field :image, :class => 'hide'
@@ -84,14 +87,12 @@
                       =f.text_area :body, :class => 'form-control'
                       =f.hidden_field :block_id, value: block.id
                       =f.hidden_field :user_id, value: current_user.id
-                    .form-group.one-rem-down
+                    .form-group.pad-top-1
                       = button_tag(:type => 'submit', :class => 'btn btn-default') do
                         comment
                         .fa.fa-share
 
-
-
-.col-md-4
+.col-md-3
 
 :javascript
 $(function () {

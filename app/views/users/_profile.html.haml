@@ -1,0 +1,20 @@
+-if current_user.present?
+  #sidebar-wrapper
+    .sidebar-nav
+      .row.center
+        .col-xs-12
+          %h4="#{current_user.name}" +"'s profile"
+          -if current_user.avatar.present?
+            =image_tag current_user.avatar.url(:thumb), :class => 'profile-pic'
+      .row
+        .col-xs-12
+          .form-group
+            = form_for @user, :url => users_path, :html => { :multipart => true } do |f|
+              =f.hidden_field :email, value: @user.email
+              .col-xs-2
+                =label_tag( 'user[avatar]', "", :class => 'button-xs photo-button') do
+                  .fa.fa-camera-retro
+                =f.file_field :avatar, :class => 'hide'
+              .col-xs-2
+                = button_tag(:type => 'submit', :class => 'button-xs photo-button') do
+                  .fa.fa-share
