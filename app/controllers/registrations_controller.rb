@@ -8,13 +8,10 @@ class RegistrationsController < Devise::RegistrationsController
 
   def update
     @user = User.find(current_user.id)
-    binding.pry
     if needs_password?(@user, params)
       successfully_updated = true
       @user.update_with_password(devise_parameter_sanitizer.sanitize(:account_update))
-      binding.pry
     else
-      binding.pry
       # remove the virtual current_password attribute
       # update_without_password doesn't know how to ignore it
       params[:user].delete(:current_password)
@@ -25,10 +22,9 @@ class RegistrationsController < Devise::RegistrationsController
       set_flash_message :notice, :updated
       # Sign in the user bypassing validation in case his password changed
       sign_in @user, :bypass => true
-      binding.pry
+
       redirect_to after_update_path_for(@user)
     else
-      binding.pry
       render "edit"
     end
   end

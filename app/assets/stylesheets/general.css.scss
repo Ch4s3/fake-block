@@ -1,37 +1,50 @@
-.one-rem-right{
+.center {
+	text-align: center;
+}
+
+/* margin */
+.mar-right-1 {
 	padding-left: 1rem;
 }
-.block-user-name{	
+.mar-right-2 {
+	padding-left: 2rem;	
+}
+/* margin */
+
+/*padding*/
+.pad-top-half {
+	padding-top: .5rem;
+}
+.pad-top-1 {
+	padding-top: 1rem;
+}
+/*padding*/
+
+.block-user-name {	
 	text-align: right;	
 	white-space: nowrap;
 }
-.dropdown-menu{
+.dropdown-menu {
 	width: 40rem;
 }
-.dropdown-toggle:hover{
+.dropdown-toggle:hover {
 	color: #1abc9c;
 }
-.friend-btn{
+.friend-btn {
 	padding-top: .5rem;
 }
-.friend-btn:hover{
+.friend-btn:hover {
 	color: #1abc9c;
 }
-.navbar-brand{
+.navbar-brand {
 	padding-top: 1.75rem;
 	font-size: 2rem;
 }
-.one-rem-down{
-	padding-top: 1rem;
-}
-.pending-friend a{
+.pending-friend a {
 	white-space: nowrap;
 	overflow: hidden;	
 }
-.two-rems-right{
-	padding-left: 2rem;	
-}
-.alert{
+.alert {
 	width: 50rem;
 	margin-left: auto;
 	margin-right: auto;
