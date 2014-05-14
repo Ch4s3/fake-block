@@ -6,6 +6,9 @@
 %p
   %b User:
   = @block.user_id
+%p
+  %b Viewable:
+  = @block.viewable
 
 = link_to 'Edit', edit_block_path(@block)
 \|

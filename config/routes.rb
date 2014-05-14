@@ -13,5 +13,10 @@ FakeBlockV2::Application.routes.draw do
     resources :friends
   end
 
-  resources :comments
+  resources :comments do
+    member do
+      put "upvote", to: "comments#upvote"
+      put "downvote", to: "comments#downvote"
+    end
+  end
 end
