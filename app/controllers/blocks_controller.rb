@@ -82,9 +82,8 @@ class BlocksController < ApplicationController
       if current_user.present?
         @user ||= current_user
       end
-      @poster = block.user
-      @comment = Comment.new
 
+      @comment = Comment.new
     end
 
     def set_block
