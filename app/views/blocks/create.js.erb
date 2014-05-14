@@ -17,8 +17,8 @@
   /*Show the flash_notice div*/
   $("#flash_notice").show(300);
 
-  /*Clear the entire form*/
-  $(":input:not(input[type=submit])").val("");
+  /*Clear the block body*/
+  $("#block_body").val("");
 
   $('#show_blocks').append('<%= j render(@block) %>');
 <% end -%>
