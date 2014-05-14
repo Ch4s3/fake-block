@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140505233446) do
+ActiveRecord::Schema.define(version: 20140512191952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20140505233446) do
     t.integer  "cached_votes_up",       default: 0
     t.integer  "cached_votes_down",     default: 0
     t.integer  "cached_weighted_score", default: 0
+    t.boolean  "viewable"
   end
 
   add_index "blocks", ["cached_votes_down"], name: "index_blocks_on_cached_votes_down", using: :btree
@@ -45,9 +46,20 @@ ActiveRecord::Schema.define(version: 20140505233446) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "cached_votes_total",    default: 0
+    t.integer  "cached_votes_score",    default: 0
+    t.integer  "cached_votes_up",       default: 0
+    t.integer  "cached_votes_down",     default: 0
+    t.integer  "cached_weighted_score", default: 0
+    t.string   "name"
   end
 
   add_index "comments", ["block_id"], name: "index_comments_on_block_id", using: :btree
+  add_index "comments", ["cached_votes_down"], name: "index_comments_on_cached_votes_down", using: :btree
+  add_index "comments", ["cached_votes_score"], name: "index_comments_on_cached_votes_score", using: :btree
+  add_index "comments", ["cached_votes_total"], name: "index_comments_on_cached_votes_total", using: :btree
+  add_index "comments", ["cached_votes_up"], name: "index_comments_on_cached_votes_up", using: :btree
+  add_index "comments", ["cached_weighted_score"], name: "index_comments_on_cached_weighted_score", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "friendships", force: true do |t|
