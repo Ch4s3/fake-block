@@ -11,6 +11,7 @@ class BlocksController < ApplicationController
   # GET /blocks/1
   # GET /blocks/1.json
   def show
+    @poster = User.find(block.user_id)
   end
 
   # GET /blocks/new
@@ -40,8 +41,10 @@ class BlocksController < ApplicationController
     @block = Block.new(block_params)
     respond_to do |format|
       if @block.save
+        block_partial_setup(@block)
         format.html { redirect_to :back, notice: 'Block was successfully created.' }
         format.json { render action: 'show', status: :created, location: @block }
+        format.js
       else
         format.html { render action: 'new' }
         format.json { render json: @block.errors, status: :unprocessable_entity }
@@ -68,13 +71,22 @@ class BlocksController < ApplicationController
   def destroy
     @block.destroy
     respond_to do |format|
-      format.html { redirect_to blocks_url }
+      format.html { redirect_to root_path }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def block_partial_setup block
+      if current_user.present?
+        @user ||= current_user
+      end
+      @poster = block.user
+      @comment = Comment.new
+
+    end
+
     def set_block
       @block = Block.find(params[:id])
     end

@@ -1,0 +1,24 @@
+<% if @block.errors.any? -%>
+  /*Hide the flash notice div*/
+  $("#flash_notice").hide(300);
+
+  /*Update the html of the div post_errors with the new one*/
+  $("#block_errors").html("<%= escape_javascript(error_messages_for(@block))%>");
+
+  /*Show the div post_errors*/
+  $("#block_errors").show(300);
+<% else -%>
+  /*Hide the div post_errors*/
+  $("#block_errors").hide(300);
+
+  /*Update the html of the div flash_notice with the new one*/
+  $("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
+
+  /*Show the flash_notice div*/
+  $("#flash_notice").show(300);
+
+  /*Clear the entire form*/
+  $(":input:not(input[type=submit])").val("");
+
+  $('#show_blocks').append('<%= j render(@block) %>');
+<% end -%>
