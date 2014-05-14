@@ -3,11 +3,14 @@
 }
 
 /* margin */
-.mar-right-1 {
+.mar-left-1 {
 	padding-left: 1rem;
 }
+.mar-right-1 {
+	padding-right: 1rem;
+}
 .mar-right-2 {
-	padding-left: 2rem;	
+	padding-right: 2rem;	
 }
 /* margin */
 
@@ -48,4 +51,15 @@
 	width: 50rem;
 	margin-left: auto;
 	margin-right: auto;
+}
+input[type=checkbox] {
+  display:none;
+  margin:10px;
+}
+input[type="checkbox"] + label:before {
+  content: "\f096"; /* check-empty */
+}
+
+input[type="checkbox"]:checked + label:before {
+  content: "\f046"; /* check */
 }

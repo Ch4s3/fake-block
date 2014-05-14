@@ -1,0 +1,16 @@
+%h4 post something
+=form_for @block, remote: true, :url => blocks_path, :html => { :multipart => true } do |f|
+  =token_tag form_authenticity_token
+  .form-group
+    =f.text_area :body, :class => 'form-control', :id => 'block_body'
+    =f.hidden_field :user_id, value: @user.id
+    .form-group.pad-top-1
+      =f.check_box :viewable
+      =f.label :viewable, "friends only", :class => 'fa fa-square-o fa-lg'
+      .row.pad-top-1
+        =label_tag( 'block[image]', "", :class => 'btn btn-primary') do
+          .fa.fa-camera-retro.fa-lg
+        =f.file_field :image, :class => 'hide'
+        = button_tag(:type => 'submit', :class => 'btn btn-default') do
+          Post
+          .fa.fa-share
