@@ -1,0 +1,19 @@
+ .content
+  .row
+    .col-xs-3
+    .col-md-6
+      %p
+        %b To:
+        = @private_message.sender.name
+      %p
+        %b From:
+        = @private_message.receiver.name
+      %p
+        %b Sent:
+        = @private_message.sent
+      %p
+        %b Subject:
+        = @private_message.subject
+      %p
+        %b Body:
+        = @private_message.body

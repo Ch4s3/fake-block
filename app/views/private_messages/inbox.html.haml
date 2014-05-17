@@ -1,0 +1,37 @@
+.content
+  .row
+    .col-xs-3
+    .col-md-6
+
+      %p
+        .fa.fa-pencil
+        = link_to 'Compose New Message', new_user_private_message_path(@user)
+      %p
+        = link_to 'Sent Messages', user_outbox_path(@user)
+
+      %h3 Received Messages
+      =form_tag(user_read_path, method: "put")  do
+        %table.table.table-striped.table-fixed-header
+          %thead.header
+            %tr
+              %th
+                From
+              %th
+                Subject
+              %th
+                Sent
+              %th
+                Read
+          %tbody
+            - @private_messages.each do |pm|
+              %tr
+                %td
+                  = pm.sender.name
+                %td
+                  = pm.subject
+                %td
+                  = pm.sent.to_s(:short)
+                %td
+                  %label.fa.fa-square-o.fa-lg{for: "message_#{pm.id}"}
+                  = check_box_tag( 'messages[]', pm.id, false,  id: "message_#{pm.id}")
+        =submit_tag 'Mark as Read'

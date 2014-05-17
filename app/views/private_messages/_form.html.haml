@@ -1,0 +1,15 @@
+= form_for [:user, @private_message] do |f|
+  .form-group
+    .field
+      = f.label :subject
+      = f.text_field :body
+    .field
+      = f.label "To"
+      = f.number_field :receiver_id
+    .field
+      = f.label :body
+      = f.text_area :body
+      =f.hidden_field :sender_id, value: current_user.id
+      =f.hidden_field :sent, value: Time.now
+    .actions
+      = f.submit 'Send'

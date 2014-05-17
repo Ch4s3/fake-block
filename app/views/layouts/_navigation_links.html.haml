@@ -8,6 +8,9 @@
       edit account
       .fa.fa-edit
   %li
+    = link_to user_inbox_path(current_user.id)  do
+      .fa.fa-envelope
+  %li
     .btn-group.friend-btn
       %button.btn.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
         %span.fa.fa-users
@@ -18,7 +21,7 @@
               friends list
               .fa.fa-list-alt
         %li.divider
-        %li 
+        %li
           %a pending
           %ul
             - unless current_user.pending_friends.empty?
@@ -31,7 +34,7 @@
                         .fa.fa-plus-square.fa-lg.mar-right-2
                       =link_to user_friend_path(:user_id => current_user, :id => u), :method => :delete, :confirm => 'Reject friend request! Are you sure?' do
                         .fa.fa-minus-square.fa-lg.mar-right-1
-          
+
             -else
               %li
                 %a no pending friend requests
