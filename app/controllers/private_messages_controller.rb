@@ -1,12 +1,17 @@
 class PrivateMessagesController < ApplicationController
    before_filter :authenticate_user!
 
-  def inbox
+  def received
     @private_messages = PrivateMessage.where(read: false, receiver_id: current_user.id)
     @user ||= current_user
   end
 
-  def outbox
+  def opened
+    @private_messages = PrivateMessage.where(read: false, receiver_id: current_user.id)
+    @user ||= current_user
+  end
+
+  def sent
     @private_messages = PrivateMessage.where(sender_id: current_user.id)
     @user ||= current_user
   end

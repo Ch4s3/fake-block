@@ -18,10 +18,10 @@ FakeBlockV2::Application.routes.draw do
     resources :friends
     resources :private_messages
 
-    get '/inbox', to: 'private_messages#inbox'
-    get '/outbox', to: 'private_messages#outbox'
+    get '/received', to: 'private_messages#received'
+    get '/sent', to: 'private_messages#sent'
     put '/mark_as_read', to: 'private_messages#mark_as_read'
-    get '/read', to: 'private_messages#read'
+    get '/opened', to: 'private_messages#opened'
   end
 
   resources :comments do

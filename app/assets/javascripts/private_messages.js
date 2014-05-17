@@ -3,5 +3,5 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $("tr[data-link]").click(function() {
-  window.location = this.data("link")
+  window.location = this.dataset("link")
 })

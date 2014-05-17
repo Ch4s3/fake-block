@@ -7,7 +7,10 @@
 				.fa.fa-pencil
 				= link_to 'Compose New Message', new_user_private_message_path(@user)
 			%p
-				= link_to 'Back to Unread Messages', user_inbox_path(@user)
+				= link_to 'Back to Unread Messages', user_received_path(@user)
+			%p
+				= link_to 'Opened Messages', user_opened_path(@user)
+
 
 			%h3 Sent Messages
 			%table.table.table-striped.table-fixed-header
@@ -21,7 +24,7 @@
 							Sent
 				%tbody
 					- @private_messages.each do |pm|
-						%tr{:data-link => user_private_message_path(:id => pm.id)}
+						%tr{"data-link" => "user_private_message_path(:id => pm.id)"}
 							%td
 								= pm.receiver.name
 							%td

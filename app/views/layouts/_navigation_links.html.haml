@@ -1,15 +1,31 @@
 - if user_signed_in?
   %li
     = link_to user_path(current_user.id) do
-      =current_user.name
+      = current_user.name
       .fa.fa-user
   %li
     = link_to edit_user_registration_path do
       edit account
       .fa.fa-edit
   %li
-    = link_to user_inbox_path(current_user.id)  do
-      .fa.fa-envelope
+    .btn-group.private-message-btn
+      %button.btn.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
+        %span.fa.fa-envelope
+      %ul.dropdown-menu{role: "menu"}
+        %li
+          %a
+            = link_to user_received_path(current_user.id)  do
+              Received Messages
+        %li.divider
+        %li
+          %a
+            = link_to user_opened_path(current_user.id) do
+              Opened Messages
+        %li.divider
+        %li
+          %a
+            = link_to user_sent_path(current_user.id) do
+              Sent Messages
   %li
     .btn-group.friend-btn
       %button.btn.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
