@@ -3,17 +3,14 @@ class PrivateMessagesController < ApplicationController
 
   def received
     @private_messages = PrivateMessage.where(read: false, receiver_id: current_user.id)
-    @user ||= current_user
   end
 
   def opened
-    @private_messages = PrivateMessage.where(read: false, receiver_id: current_user.id)
-    @user ||= current_user
+    @private_messages = PrivateMessage.where(read: true, receiver_id: current_user.id)
   end
 
   def sent
     @private_messages = PrivateMessage.where(sender_id: current_user.id)
-    @user ||= current_user
   end
 
   def new
@@ -25,9 +22,9 @@ class PrivateMessagesController < ApplicationController
     @private_message = PrivateMessage.new(private_message_params)
     if @private_message.save
       flash[:notice] = 'Message was successfully sent.'
-      redirect_to user_inbox_path
+      redirect_to user_opened_path
     else
-      flash[:error] = 'One of the fields was not entered correctly. Please check them.'
+      flash[:notice] = 'One of the fields was not entered correctly. Please check them.'
       render 'new'
     end
   end

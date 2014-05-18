@@ -26,6 +26,12 @@
           %a
             = link_to user_sent_path(current_user.id) do
               Sent Messages
+        %li.divider
+        %li
+          %a
+            = link_to new_user_private_message_path(current_user.id) do
+              Compose new Message
+              .fa.fa-pencil
   %li
     .btn-group.friend-btn
       %button.btn.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}

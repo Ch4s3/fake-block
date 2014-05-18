@@ -1,7 +1,21 @@
- .content
+.content
   .row
     .col-xs-3
     .col-md-6
+ 
+      %ul.message-nav
+        %li
+          .fa.fa-pencil
+          = link_to 'Compose New', new_user_private_message_path(current_user)
+        %li
+          = link_to 'Sent', user_sent_path(current_user)
+        %li
+          = link_to 'Received', user_received_path(current_user)
+        %li
+          = link_to 'Opened', user_opened_path(current_user)
+
+
+      %h3=@private_message.subject
       %p
         %b To:
         = @private_message.sender.name
@@ -10,10 +24,7 @@
         = @private_message.receiver.name
       %p
         %b Sent:
-        = @private_message.sent
-      %p
-        %b Subject:
-        = @private_message.subject
+        = @private_message.sent.to_s(:short)
       %p
         %b Body:
         = @private_message.body

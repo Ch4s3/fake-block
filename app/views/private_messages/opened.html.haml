@@ -2,34 +2,36 @@
   .row
     .col-xs-3
     .col-md-6
-
-      %p
-        .fa.fa-pencil
-        = link_to 'Compose New Message', new_user_private_message_path(@user)
-      %p
-        = link_to 'Sent Messages', user_sent_path(@user)
-      %p
-        = link_to 'Received Messages', user_received_path(@user)
+ 
+      %ul.message-nav
+        %li
+          .fa.fa-pencil
+          = link_to 'Compose New', new_user_private_message_path(current_user)
+        %li
+          = link_to 'Sent', user_sent_path(current_user)
+        %li
+          = link_to 'Received', user_received_path(current_user)
+        %li
+          = link_to 'Opened', user_opened_path(current_user)
 
       %h3 Opened Messages
-      %table.table.table-striped.table-fixed-header
-        %thead.header
-          %tr
-            %th
-              From
-            %th
-              Subject
-            %th
-              Sent
-            %th
-              Read
-        %tbody
-          - @private_messages.each do |pm|
+      .panel
+        %table.table.table-fixed-header.message-table
+          %thead.header
             %tr
-              %td
-                = pm.sender.name
-              %td
-                = pm.subject
-              %td
-                = pm.sent.to_s(:short)
-              
+              %th
+                From
+              %th
+                Subject
+              %th
+                Sent
+          %tbody
+            - @private_messages.each do |pm|
+              %tr{"data-link" => user_private_message_path(:id => pm.id)}
+                %td
+                  = pm.sender.name
+                %td
+                  = pm.subject
+                %td
+                  = pm.sent.to_s(:short)
+                
