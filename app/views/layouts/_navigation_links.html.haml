@@ -16,12 +16,10 @@
           %a
             = link_to user_received_path(current_user.id)  do
               Received Messages
-        %li.divider
         %li
           %a
             = link_to user_opened_path(current_user.id) do
               Opened Messages
-        %li.divider
         %li
           %a
             = link_to user_sent_path(current_user.id) do
@@ -29,9 +27,7 @@
         %li.divider
         %li
           %a
-            = link_to new_user_private_message_path(current_user.id) do
-              Compose new Message
-              .fa.fa-pencil
+            = link_to 'Compose New Message', new_user_private_message_path(current_user), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal'}
   %li
     .btn-group.friend-btn
       %button.btn.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}

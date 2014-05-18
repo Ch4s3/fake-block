@@ -1,15 +1,15 @@
-= form_for [:user, @private_message] do |f|
+= form_for [current_user, @private_message] do |f|
   .form-group
     .field
       = f.label :subject
-      = f.text_field :body
+      = f.text_field :subject, :class => 'form-control'
     .field
       = f.label "To"
-      = f.number_field :receiver_id
+      = f.number_field :receiver_id, :class => 'form-control'
     .field
       = f.label :body
-      = f.text_area :body
-      =f.hidden_field :sender_id, value: current_user.id
-      =f.hidden_field :sent, value: Time.now
+      = f.text_area :body, :class => 'form-control'
+      = f.hidden_field :sender_id, value: current_user.id
+      = f.hidden_field :sent, value: Time.now
     .actions
       = f.submit 'Send'

@@ -3,19 +3,27 @@ class PrivateMessagesController < ApplicationController
 
   def received
     @private_messages = PrivateMessage.where(read: false, receiver_id: current_user.id)
+    @private_message = PrivateMessage.new
   end
 
   def opened
     @private_messages = PrivateMessage.where(read: true, receiver_id: current_user.id)
+    @private_message = PrivateMessage.new
   end
 
   def sent
     @private_messages = PrivateMessage.where(sender_id: current_user.id)
+    @private_message = PrivateMessage.new
   end
 
   def new
-    @user ||= current_user
+    @user||= current_user
     @private_message = PrivateMessage.new
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
@@ -25,12 +33,13 @@ class PrivateMessagesController < ApplicationController
       redirect_to user_opened_path
     else
       flash[:notice] = 'One of the fields was not entered correctly. Please check them.'
-      render 'new'
+      redirect_to :back
     end
   end
 
   def show
-    @private_message = PrivateMessage.find(params[:id])
+    @pm = PrivateMessage.find(params[:id])
+    @private_message = PrivateMessage.new
   end
 
   def mark_as_read

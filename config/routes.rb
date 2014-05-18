@@ -22,6 +22,7 @@ FakeBlockV2::Application.routes.draw do
     get '/sent', to: 'private_messages#sent'
     put '/mark_as_read', to: 'private_messages#mark_as_read'
     get '/opened', to: 'private_messages#opened'
+
   end
 
   resources :comments do

@@ -16,4 +16,5 @@
 //= require turbolinks
 //= require bootstrap
 //= require flat-ui
+//= require new_modal
 //= require_tree .
