@@ -1,7 +1,6 @@
 .center {
 	text-align: center;
 }
-
 /* margin */
 .mar-left-1 {
 	padding-left: 1rem;
@@ -53,7 +52,7 @@
 	margin-right: auto;
 }
 input[type=checkbox] {
-  /*display:none;*/
+  display:none;
   margin:10px;
 }
 input[type="checkbox"] + label:before {

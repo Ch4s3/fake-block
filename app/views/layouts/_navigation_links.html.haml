@@ -3,10 +3,10 @@
     = link_to user_path(current_user.id) do
       = current_user.name
       .fa.fa-user
-  %li
-    = link_to edit_user_registration_path do
-      edit account
-      .fa.fa-edit
+  -# %li
+  -#   = link_to edit_user_registration_path do
+  -#     edit account
+  -#     .fa.fa-edit
   %li
     .btn-group.private-message-btn
       %button.btn.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
