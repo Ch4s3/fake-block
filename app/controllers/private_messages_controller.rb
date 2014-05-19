@@ -34,10 +34,10 @@ class PrivateMessagesController < ApplicationController
     @private_message.receiver_id = receiver.id
 
     if @private_message.save
-      flash[:notice] = 'Message was successfully sent.'
+      flash[:success] = 'Message was successfully sent.'
       redirect_to user_opened_path
     else
-      flash[:notice] = 'One of the fields was not entered correctly. Please check them.'
+      flash[:error] = 'One of the fields was not entered correctly. Please check them.'
       redirect_to :back
     end
   end

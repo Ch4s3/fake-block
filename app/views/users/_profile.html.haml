@@ -9,8 +9,8 @@
       .row
         .col-xs-12
           .form-group
-            = form_for @user, :url => users_path, :html => { :multipart => true } do |f|
-              =f.hidden_field :email, value: @user.email
+            = form_for current_user, :url => users_path, :html => { :multipart => true } do |f|
+              =f.hidden_field :email, value: current_user.email
               .col-xs-2
                 =label_tag( 'user[avatar]', "", :class => 'button-xs photo-button') do
                   .fa.fa-camera-retro

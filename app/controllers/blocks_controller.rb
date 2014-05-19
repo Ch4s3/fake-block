@@ -1,7 +1,6 @@
 class BlocksController < ApplicationController
   before_action :set_block, only: [:show, :edit, :update, :destroy]
 
-
   # GET /blocks
   # GET /blocks.json
   def index
@@ -42,12 +41,13 @@ class BlocksController < ApplicationController
     respond_to do |format|
       if @block.save
         block_partial_setup(@block)
-        format.html { redirect_to :back, notice: 'Block was successfully created.' }
+        # format.html { redirect_to :back, notice: 'Block was successfully created.' }
+        flash[:success] = "Block posted"
         format.json { render action: 'show', status: :created, location: @block }
         format.js
       else
         format.html { render action: 'new' }
-        format.json { render json: @block.errors, status: :unprocessable_entity }
+        flash[:error] = "The block couldn't be posted without an image or text."
       end
     end
   end
@@ -79,10 +79,6 @@ class BlocksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def block_partial_setup block
-      if current_user.present?
-        @user ||= current_user
-      end
-
       @comment = Comment.new
     end
 
