@@ -18,3 +18,9 @@ To run locally, set up ruby, rails and postgres
 Visit in browser: localhost:3000/
 
 rake db:reset is also useful
+
+For Admin Panel:
+localhost/admin
+
+login: admin@example.com
+password: password
