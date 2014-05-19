@@ -8,8 +8,23 @@
 		margin-left: 1rem;
 	}
 }
-.hide{
+.hide {
 	display: none;
 }
-.upload-button{
+.search-bar {
+	margin-top: .75rem;
+}
+.search-bar .search {
+	height: 3.5rem;
+}
+.search-bar .btn {
+	padding-top: .5rem;
+	height: 3.5rem;
+}
+.upload-button {
+}
+.ui-corner-all {
+	background-color: white;
+	z-index: 9999;
+	width: 20%;
 }

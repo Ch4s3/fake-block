@@ -4,4 +4,12 @@ class Block < ActiveRecord::Base
 	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   belongs_to :user
   has_many :comments
+
+  def self.text_search(query)
+    if query.present?
+      where("body @@ :q or body ~* :q", q: query)
+    else
+      scoped
+    end
+  end
 end

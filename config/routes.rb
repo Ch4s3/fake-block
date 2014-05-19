@@ -1,4 +1,8 @@
 FakeBlockV2::Application.routes.draw do
+  get "searches/search"
+
+  resources :searches, :only => [:index]
+  
   resources :blocks do
     member do
       put "upvote", to: "blocks#upvote"
