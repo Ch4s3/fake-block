@@ -29,9 +29,11 @@ class PrivateMessagesController < ApplicationController
   def create
     
     @private_message = PrivateMessage.new(private_message_params)
-    receiver = params_receiver
-
-    @private_message.receiver_id = receiver.id
+    
+    if params_receiver != nil
+      receiver = params_receiver
+      @private_message.receiver_id = receiver.id
+    end
 
     if @private_message.save
       flash[:success] = 'Message was successfully sent.'
