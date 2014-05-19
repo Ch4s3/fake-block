@@ -1,0 +1,24 @@
+.content
+  .col-xs-3
+  .col-xs-6
+    .panel
+      .row
+        .col-xs-1
+        .col-xs-8
+          -if current_user.present?
+            = form_for current_user do |f|
+              .form-group
+                .field
+                  = f.label :name
+                  = f.text_field :name, :class => 'form-control'
+                .field
+                  %h6 Profile
+                  =label_tag 'From'
+                  =text_field_tag 'From', '',class: 'form-control'
+                  =label_tag 'Age'
+                  =text_field_tag 'age', '',class: 'form-control'
+                  =label_tag 'Likes'
+                  =text_field_tag 'likes', '',class: 'form-control'
+                .actions.pad-top-1
+                  = button_tag(:type => 'submit', :class => 'btn btn-default') do
+                    Update
