@@ -7,6 +7,7 @@
     .form-group.pad-top-1
       =f.check_box :viewable
       =f.label :viewable, "friends only", :class => 'fa fa-square-o fa-lg'
+      =select_tag :seconds_to_expiration, options_for_select([["never", -1],["30 seconds", 30] ,["1 minute", 60], ["30 minutes", 1800], ["1 day", 86400]])
       .row.pad-top-1
         =label_tag( 'block[image]', "", :class => 'btn btn-primary') do
           .fa.fa-camera-retro.fa-lg

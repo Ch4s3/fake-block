@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140518222349) do
+ActiveRecord::Schema.define(version: 20140519192658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20140518222349) do
     t.integer  "cached_votes_down",     default: 0
     t.integer  "cached_weighted_score", default: 0
     t.boolean  "viewable"
+    t.datetime "expiration"
   end
 
   add_index "blocks", ["cached_votes_down"], name: "index_blocks_on_cached_votes_down", using: :btree

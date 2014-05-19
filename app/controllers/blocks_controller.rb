@@ -38,6 +38,11 @@ class BlocksController < ApplicationController
   # POST /blocks.json
   def create
     @block = Block.new(block_params)
+
+    if params[:seconds_to_expiration].present?
+      @block.expires_in(params[:seconds_to_expiration].to_i)
+    end
+
     respond_to do |format|
       if @block.save
         block_partial_setup(@block)

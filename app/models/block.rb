@@ -1,4 +1,6 @@
 class Block < ActiveRecord::Base
+  scope :not_expired, lambda{ |time = Time.now| where("? BETWEEN created_at AND expiration OR expiration = ?", time, nil) }
+
   acts_as_votable
 	has_attached_file :image, 
                     :styles => { :medium => "300x300>", 
@@ -14,7 +16,37 @@ class Block < ActiveRecord::Base
   belongs_to :user
   has_many :comments
 
-  def self.text_search(query)
+  def expired?
+    if self.expiration.present?
+      if self.expiration <= Time.now
+        return true
+      else
+        return false
+      end
+
+    else
+      return false
+    end
+  end
+
+  def self.delete_expired
+    Block.find_each do |b|
+      if b.expired?
+        b.destroy
+      end
+    end
+  end
+
+  def expires_in seconds
+    unless seconds == -1
+      date_time = Time.now + (seconds).seconds
+      self.expiration = date_time
+    else
+      self.expiration = nil
+    end
+  end
+
+  def self.text_search query
     if query.present?
       where("body @@ :q or body ~* :q", q: query)
     else
