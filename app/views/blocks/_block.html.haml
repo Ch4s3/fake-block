@@ -54,7 +54,7 @@
                           .fa.fa-chevron-down
       .row
         .col-xs-12
-          -if @user.present?
+          -if current_user.present?
             =form_for @comment do |f|
               .form-group
                 =f.text_area :body, :class => 'form-control'
