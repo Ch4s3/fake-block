@@ -41,8 +41,8 @@ class BlocksController < ApplicationController
     respond_to do |format|
       if @block.save
         block_partial_setup(@block)
-        # format.html { redirect_to :back, notice: 'Block was successfully created.' }
-        flash[:success] = "Block posted"
+        format.html { redirect_to :back }
+        flash[:notice] = "Block posted"
         format.json { render action: 'show', status: :created, location: @block }
         format.js
       else
