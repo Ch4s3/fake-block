@@ -1,0 +1,17 @@
+= form_for [current_user, @private_message] do |f|
+  .form-group
+    .field
+      = f.label :subject
+      = f.text_field :subject, :class => 'form-control'
+    .field
+      = f.label "To"
+      = f.text_field 'receiver', :class => 'form-control receiver'
+    .field
+      = f.label :body
+      = f.text_area :body, :class => 'form-control'
+      = f.hidden_field :sender_id, value: current_user.id
+      = f.hidden_field :sent, value: Time.now
+    .actions.pad-top-1
+      = button_tag(:type => 'submit', :class => 'btn btn-default') do
+        Send
+        .fa.fa-share

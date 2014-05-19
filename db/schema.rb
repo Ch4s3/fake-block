@@ -71,6 +71,17 @@ ActiveRecord::Schema.define(version: 20140518222349) do
     t.datetime "updated_at"
   end
 
+  create_table "private_messages", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.text     "subject"
+    t.text     "body"
+    t.datetime "sent"
+    t.boolean  "read",        default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "roles", force: true do |t|
     t.string   "name"
     t.integer  "resource_id"

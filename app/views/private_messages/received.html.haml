@@ -1,0 +1,36 @@
+.content
+  .row
+    .col-xs-3
+    .col-md-6
+ 
+      =render 'message_nav'
+
+      %h3 Received Messages
+      .panel
+        =form_tag(user_opened_path, method: "put")  do
+          %table.table.table-fixed-header.message-table
+            %thead.header
+              %tr
+                %th
+                  From
+                %th
+                  Subject
+                %th
+                  Sent
+                %th
+                  Read
+            %tbody
+              - @private_messages.each do |pm|
+                %tr{"data-link" => user_private_message_path(:id => pm.id)}
+                  %td
+                    = pm.sender.name
+                  %td
+                    = pm.subject
+                  %td
+                    = pm.sent.to_s(:short)
+                  %td
+                    %label.fa.fa-square-o.fa-lg{for: "message_#{pm.id}"}
+                    = check_box_tag( 'messages[]', pm.id, false,  id: "message_#{pm.id}")
+      = button_tag(:type => 'submit', :class => 'btn btn-default') do
+        Mark as Read
+        .fa.fa-check

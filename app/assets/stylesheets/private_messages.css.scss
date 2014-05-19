@@ -1,0 +1,16 @@
+// Place all the styles related to the private_messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.message-table tbody tr{ 
+	cursor: pointer; 
+	cursor: hand; 
+}
+.message-table tbody tr:hover{
+	background-color: #1abc9c;
+}
+.message-nav li{
+	display: inline;
+	list-style: none;
+	padding-left: 2rem;
+}

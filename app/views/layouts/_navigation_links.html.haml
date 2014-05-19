@@ -1,12 +1,33 @@
 - if user_signed_in?
   %li
     = link_to user_path(current_user.id) do
-      =current_user.name
+      = current_user.name
       .fa.fa-user
+  -# %li
+  -#   = link_to edit_user_registration_path do
+  -#     edit account
+  -#     .fa.fa-edit
   %li
-    = link_to edit_user_registration_path do
-      edit account
-      .fa.fa-edit
+    .btn-group.private-message-btn
+      %button.btn.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
+        %span.fa.fa-envelope
+      %ul.dropdown-menu{role: "menu"}
+        %li
+          %a
+            = link_to user_received_path(current_user.id)  do
+              Received Messages
+        %li
+          %a
+            = link_to user_opened_path(current_user.id) do
+              Opened Messages
+        %li
+          %a
+            = link_to user_sent_path(current_user.id) do
+              Sent Messages
+        %li.divider
+        %li
+          %a
+            = link_to 'Compose New Message', new_user_private_message_path(current_user), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal'}
   %li
     .btn-group.friend-btn
       %button.btn.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
@@ -18,7 +39,7 @@
               friends list
               .fa.fa-list-alt
         %li.divider
-        %li 
+        %li
           %a pending
           %ul
             - unless current_user.pending_friends.empty?
@@ -31,7 +52,7 @@
                         .fa.fa-plus-square.fa-lg.mar-right-2
                       =link_to user_friend_path(:user_id => current_user, :id => u), :method => :delete, :confirm => 'Reject friend request! Are you sure?' do
                         .fa.fa-minus-square.fa-lg.mar-right-1
-          
+
             -else
               %li
                 %a no pending friend requests

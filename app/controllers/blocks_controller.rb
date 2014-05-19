@@ -1,6 +1,6 @@
 class BlocksController < ApplicationController
   before_action :set_block, only: [:show, :edit, :update, :destroy]
-  
+
 
   # GET /blocks
   # GET /blocks.json
@@ -18,13 +18,13 @@ class BlocksController < ApplicationController
   def new
     @block = Block.new
   end
-  
+
   def upvote
     @block = Block.find(params[:id])
     @block.upvote_from current_user
     redirect_to :back
   end
-  
+
   def downvote
     @block = Block.find(params[:id])
     @block.downvote_from current_user

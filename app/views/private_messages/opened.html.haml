@@ -1,0 +1,28 @@
+.content
+  .row
+    .col-xs-3
+    .col-md-6
+ 
+      =render 'message_nav'
+      
+      %h3 Opened Messages
+      .panel
+        %table.table.table-fixed-header.message-table
+          %thead.header
+            %tr
+              %th
+                From
+              %th
+                Subject
+              %th
+                Sent
+          %tbody
+            - @private_messages.each do |pm|
+              %tr{"data-link" => user_private_message_path(:id => pm.id)}
+                %td
+                  = pm.sender.name
+                %td
+                  = pm.subject
+                %td
+                  = pm.sent.to_s(:short)
+                

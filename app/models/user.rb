@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :requested_friends, :through => :friendships, :source => :friend, :conditions => "status = 'requested'", :order => :created_at
   has_many :pending_friends, :through => :friendships, :source => :friend, :conditions => "status = 'pending'", :order => :created_at
   has_many :friendships, :dependent => :destroy
+  has_many :private_messages
   has_many :blocks
   has_many :comments
 
