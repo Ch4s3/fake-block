@@ -15,5 +15,5 @@
       %p
         Email: #{@user.email if @user.email}
       - if current_user == @user
-        = link_to 'Edit account', edit_user_path
+        = link_to 'Edit account', edit_user_registration_path(@user.id)
     .col-xs-4
