@@ -2,6 +2,8 @@ class Block < ActiveRecord::Base
   scope :not_expired, lambda{ |time = Time.now| where("? BETWEEN created_at AND expiration OR expiration = ?", time, nil) }
 
   acts_as_votable
+  scope :by_friends, lambda { |user| where(:user_id => user.friend_ids)}
+
 	has_attached_file :image, 
                     :styles => { :medium => "300x300>", 
                     :thumb => "100x100>" }, 

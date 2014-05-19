@@ -14,6 +14,7 @@ FakeBlockV2::Application.routes.draw do
   end
 
   root :to => "home#index"
+  get 'friends_blocks' => "home#friends_blocks", :as => :sort
   devise_for :users, :controllers => {:registrations => "registrations"}
 
   resources :users do
