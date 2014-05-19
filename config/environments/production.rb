@@ -1,6 +1,9 @@
 FakeBlockV2::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Makes the active admin css available to admin section 
+  config.assets.precompile += ['active_admin.css']
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
