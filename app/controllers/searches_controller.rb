@@ -5,8 +5,10 @@ class SearchesController < ApplicationController
   end
 
   def search
-  	search_params = params[:search]
-  	@blocks = Block.text_search(search_params)
-    @users = User.text_search(search_params)
+    if params[:search].present?
+    	search_params = params[:search]
+    	@blocks = Block.text_search(search_params)
+      @users = User.text_search(search_params)
+    end
   end
 end

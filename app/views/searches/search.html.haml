@@ -1,2 +1,23 @@
-%h1 Search#search
-%p Find me in app/views/search/search.html.haml
+.col-xs-3
+.col-xs-6
+  .panel.center
+    %h1 results
+    .row
+      -if @users.present?
+        -@users.each do |user|
+          =link_to "#{user.name}", user_path(user.id)
+    .row
+      .col-xs-12.center
+        -if @blocks.present?
+          -@blocks.each do |block|
+            =block.body
+            -if block.image.present?
+              .block-image{"data-target" => ".modal_#{block.id}", "data-toggle" => "modal"}
+                =image_tag block.image.url(:medium)
+              .modal.fade.bs-example-modal-lg{class: "modal_#{block.id}","aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", role: "dialog", tabindex: "-1"}
+                .modal-dialog.modal-lg
+                  .modal-content
+                    =image_tag block.image.url
+            =link_to 'view', block_path(block.id), :class => 'btn btn-primary'
+    .row
+.col-xs-3
