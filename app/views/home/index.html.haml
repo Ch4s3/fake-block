@@ -4,7 +4,7 @@
 .col-md-6
   = render 'layouts/messages'
   .panel.post
-    -if @user.present?
+    -if current_user.present?
       =render 'blocks/post'
     -else
       %h5 log in to post

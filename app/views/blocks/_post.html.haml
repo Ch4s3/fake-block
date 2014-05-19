@@ -3,7 +3,7 @@
   =token_tag form_authenticity_token
   .form-group
     =f.text_area :body, :class => 'form-control', :id => 'block_body'
-    =f.hidden_field :user_id, value: @user.id
+    =f.hidden_field :user_id, value: current_user.id
     .form-group.pad-top-1
       =f.check_box :viewable
       =f.label :viewable, "friends only", :class => 'fa fa-square-o fa-lg'
