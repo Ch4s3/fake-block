@@ -2,15 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.message-table tbody tr{ 
+.read-message{ 
 	cursor: pointer; 
 	cursor: hand; 
 }
 .message-table tbody tr:hover{
-	background-color: #1abc9c;
+	background-color: #eee;
 }
 .message-nav li{
 	display: inline;
 	list-style: none;
 	padding-left: 2rem;
 }
+
+/*.message-nav .nav-pills{
+	background-color:pink;
+}*/

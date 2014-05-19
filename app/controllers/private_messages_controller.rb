@@ -35,7 +35,7 @@ class PrivateMessagesController < ApplicationController
 
     if @private_message.save
       flash[:success] = 'Message was successfully sent.'
-      redirect_to user_opened_path
+      redirect_to :back
     else
       flash[:error] = 'One of the fields was not entered correctly. Please check them.'
       redirect_to :back

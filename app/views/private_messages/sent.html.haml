@@ -20,7 +20,7 @@
               %tr{"data-link" => user_private_message_path(:id => pm.id)}
                 %td
                   = pm.receiver.name
-                %td
+                %td.read-message{"data-link" => user_private_message_path(:id => pm.id)}
                   = pm.subject
                 %td
                   = pm.sent.to_s(:short)
