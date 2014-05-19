@@ -6,7 +6,9 @@ class Block < ActiveRecord::Base
                     :default_url => "/images/:style/missing.png",
                     :storage => :s3,
                     :bucket => 'paperclip-bucket-fake_block',
-                    :s3_credentials => S3_CREDENTIALS
+                    :s3_credentials => S3_CREDENTIALS,
+                      :url => "/:image/:id/:style/:basename.:extension",
+                      :path => ":image/:id/:style/:basename.:extension"
 	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   validate :any_present?
   belongs_to :user
