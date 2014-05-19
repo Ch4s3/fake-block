@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create( user_params )
-    Search.indes_user(@user)
+    Search.index_user(@user)
   end
 
   
@@ -20,12 +20,14 @@ class UsersController < ApplicationController
   end
   
   def update
-    authorize! :update, @user, :message => 'Not authorized as an administrator.'
     @user = User.find(params[:id])
-    if @user.update_attributes(params[:user], :as => :admin)
-      redirect_to users_path, :notice => "User updated."
+    @user.profile = {age: params[:age], likes: params[:likes].split, from: params[:from] }
+
+    if @user.update(user_params)
+      Search.index_user(@user)
+      redirect_to user_path, :notice => "User updated."
     else
-      redirect_to users_path, :alert => "Unable to update user."
+      redirect_to user_path, :alert => "Unable to update user."
     end
   end
     
@@ -39,4 +41,8 @@ class UsersController < ApplicationController
       redirect_to users_path, :notice => "Can't delete yourself."
     end
   end
+  private
+  def user_params
+      params.require(:user).permit(:name)
+    end
 end
