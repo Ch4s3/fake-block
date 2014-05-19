@@ -21,10 +21,10 @@
                   Read
             %tbody
               - @private_messages.each do |pm|
-                %tr{"data-link" => user_private_message_path(:id => pm.id)}
+                %tr
                   %td
                     = pm.sender.name
-                  %td
+                  %td.read-message{"data-link" => user_private_message_path(:id => pm.id)}
                     = pm.subject
                   %td
                     = pm.sent.to_s(:short)
