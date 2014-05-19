@@ -17,6 +17,7 @@ gem 'acts_as_votable', '~> 0.9.0'
 gem 'figaro'
 gem 'haml-rails'
 gem "paperclip", "~> 4.1"
+gem 'aws-sdk'
 gem 'pg'
 gem 'puma'
 gem 'rolify'
