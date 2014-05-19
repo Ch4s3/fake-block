@@ -71,6 +71,17 @@ FakeBlockV2::Application.configure do
   # the I18n.default_locale when a translation can not be found).
   config.i18n.fallbacks = true
 
+  config.paperclip_defaults = {
+        :storage =&gt; :s3,
+        :s3_credentials =&gt; {
+          :bucket =&gt; ENV['AWS_BUCKET'],
+          :access_key_id =&gt; ENV['AWS_ACCESS_KEY_ID'],
+          :secret_access_key =&gt; ENV['AWS_SECRET_ACCESS_KEY']
+        },
+        :path =&gt; ":class/:id/:basename_:style.:extension",
+        :url =&gt; ":s3_sg_url"
+    }
+
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
