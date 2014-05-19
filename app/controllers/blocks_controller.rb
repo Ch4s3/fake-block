@@ -11,7 +11,7 @@ class BlocksController < ApplicationController
   # GET /blocks/1
   # GET /blocks/1.json
   def show
-    @poster = User.find(block.user_id)
+    @block = Block.find(params[:id])
   end
 
   # GET /blocks/new

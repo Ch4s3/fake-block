@@ -5,11 +5,8 @@
   = @block.body
 %p
   %b User:
-  = @block.user_id
-%p
-  %b Viewable:
-  = @block.viewable
+  = @block.user.name
 
-= link_to 'Edit', edit_block_path(@block)
+-if current_user.present? && @block.user = current_user
+  = link_to 'Edit', edit_block_path(@block)
 
-= link_to 'Back', blocks_path

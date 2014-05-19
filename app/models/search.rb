@@ -5,6 +5,11 @@ class Search < ActiveRecord::Base
     suggestions.order("popularity desc").limit(10).pluck(:term)
   end
   
+  def self.index_user user
+    index_term(user.name)
+    user.name.split.each { |t| index_term(t) }
+  end
+
   def self.index_users
     User.find_each do |user|
       index_term(user.name)

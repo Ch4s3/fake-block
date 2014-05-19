@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create( user_params )
+    Search.indes_user(@user)
   end
 
   
