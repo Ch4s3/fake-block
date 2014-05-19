@@ -12,13 +12,15 @@ module FakeBlockV2
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
       g.test_framework :rspec
-      
-      
-      
-      
+
       g.view_specs false
       g.helper_specs false
     end
+
+    config.paperclip_defaults = {
+            :storage => :s3,
+            :s3_host_name => 's3-us-east-1.amazonaws.com'
+    }
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
