@@ -3,19 +3,8 @@
     .col-xs-3
     .col-md-6
  
-      %ul.message-nav
-        %li
-          .fa.fa-pencil
-          = link_to 'Compose New Message', new_user_private_message_path(current_user), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal'}
-        %li
-          = link_to 'Sent', user_sent_path(current_user)
-        %li
-          = link_to 'Received', user_received_path(current_user)
-        %li
-          = link_to 'Opened', user_opened_path(current_user)
-
+      =render 'message_nav'
       
-
       %h3 Opened Messages
       .panel
         %table.table.table-fixed-header.message-table

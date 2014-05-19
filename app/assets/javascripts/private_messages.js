@@ -1,10 +1,3 @@
-// $(document).ready(function() {
-// 	$("tr[data-link]").click(function() {
-// 		window.location = this.dataset.link
-// 	});
-// });
-
-
 var ready;
 ready = function() {
 

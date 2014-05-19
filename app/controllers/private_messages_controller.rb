@@ -27,7 +27,12 @@ class PrivateMessagesController < ApplicationController
   end
 
   def create
+    
     @private_message = PrivateMessage.new(private_message_params)
+    receiver = params_receiver
+
+    @private_message.receiver_id = receiver.id
+
     if @private_message.save
       flash[:notice] = 'Message was successfully sent.'
       redirect_to user_opened_path
@@ -54,7 +59,10 @@ class PrivateMessagesController < ApplicationController
 
 private
  def private_message_params
-      params.require(:private_message).permit(:body, :sender_id, :receiver_id, :subject, :sent, :read)
-    end
+      params.require(:private_message).permit(:body, :sender_id, :subject, :sent, :read)
+  end
 
+  def params_receiver
+    User.where('name = ?', params[:private_message][:receiver]).first
+  end
 end

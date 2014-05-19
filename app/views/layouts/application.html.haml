@@ -10,6 +10,7 @@
   %body
     %header
       = render 'layouts/navigation'
+      = render partial: 'private_messages/new'
     %main{:role => "main"}
       = yield
       = render 'private_messages/new'

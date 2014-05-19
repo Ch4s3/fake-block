@@ -3,17 +3,7 @@
     .col-xs-3
     .col-md-6
  
-      %ul.message-nav
-        %li
-          .fa.fa-pencil
-          = link_to 'Compose New Message', new_user_private_message_path(current_user), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal'}
-        %li
-          = link_to 'Sent', user_sent_path(current_user)
-        %li
-          = link_to 'Received', user_received_path(current_user)
-        %li
-          = link_to 'Opened', user_opened_path(current_user)
-
+      =render 'message_nav'
 
       %h3 Received Messages
       .panel
@@ -41,4 +31,6 @@
                   %td
                     %label.fa.fa-square-o.fa-lg{for: "message_#{pm.id}"}
                     = check_box_tag( 'messages[]', pm.id, false,  id: "message_#{pm.id}")
-      =submit_tag 'Mark as Read'
+      = button_tag(:type => 'submit', :class => 'btn btn-default') do
+        Mark as Read
+        .fa.fa-check
