@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140519192658) do
+ActiveRecord::Schema.define(version: 20140519180911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(version: 20140519192658) do
     t.integer  "cached_votes_down",     default: 0
     t.integer  "cached_weighted_score", default: 0
     t.boolean  "viewable"
-    t.datetime "expiration"
   end
 
   add_index "blocks", ["cached_votes_down"], name: "index_blocks_on_cached_votes_down", using: :btree
@@ -101,6 +100,19 @@ ActiveRecord::Schema.define(version: 20140519192658) do
     t.integer  "user_id"
     t.integer  "friend_id"
     t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", force: true do |t|
+    t.string   "sender_id",                           null: false
+    t.string   "recipient_id"
+    t.boolean  "sender_deleted",    default: false
+    t.boolean  "recipient_deleted", default: false
+    t.string   "subject",                             null: false
+    t.text     "body"
+    t.datetime "read_at"
+    t.string   "container",         default: "draft"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

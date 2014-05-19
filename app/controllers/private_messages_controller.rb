@@ -29,13 +29,15 @@ class PrivateMessagesController < ApplicationController
   def create
     
     @private_message = PrivateMessage.new(private_message_params)
-    receiver = params_receiver
-
-    @private_message.receiver_id = receiver.id
+    
+    if params_receiver != nil
+      receiver = params_receiver
+      @private_message.receiver_id = receiver.id
+    end
 
     if @private_message.save
       flash[:success] = 'Message was successfully sent.'
-      redirect_to user_opened_path
+      redirect_to :back
     else
       flash[:error] = 'One of the fields was not entered correctly. Please check them.'
       redirect_to :back
