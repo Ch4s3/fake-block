@@ -1,7 +1,10 @@
-%h1 Editing block
-
-= render 'form'
-
-= link_to 'Show', @block
-\|
-= link_to 'Back', blocks_path
+.content
+  .col-xs-3
+  .col-xs-6
+    .panel
+      .row
+        .col-xs-1
+        .col-xs-8
+          %h1 Editing block
+          = render 'form'
+          = link_to 'Show', @block

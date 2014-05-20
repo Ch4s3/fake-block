@@ -7,7 +7,7 @@
 
       %h3 Received Messages
       .panel
-        =form_tag(user_opened_path, method: "put")  do
+        =form_tag(user_mark_as_read_path, method: "put")  do
           %table.table.table-fixed-header.message-table
             %thead.header
               %tr
@@ -29,8 +29,8 @@
                   %td
                     = pm.sent.to_s(:short)
                   %td
-                    %label.fa.fa-square-o.fa-lg{for: "message_#{pm.id}"}
-                    = check_box_tag( 'messages[]', pm.id, false,  id: "message_#{pm.id}")
-      = button_tag(:type => 'submit', :class => 'btn btn-default') do
-        Mark as Read
-        .fa.fa-check
+                    = check_box_tag( 'messages[]', pm.id, false,  id: "message_#{pm.id}", :class => 'check-show')
+          .panel-footer
+            = button_tag(:type => 'submit', :class => 'btn btn-default') do
+              Mark as Read
+              .fa.fa-check

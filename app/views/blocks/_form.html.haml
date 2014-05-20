@@ -5,12 +5,9 @@
       %ul
         - @block.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :body
-    = f.text_area :body
-  .field
-    = f.label :user_id
-    = f.number_field :user_id
-  .actions
-    = f.submit 'Save'
+  .form-group
+    .field
+      = f.label :body
+      = f.text_area :body
+    .actions
+      = f.submit 'Save'

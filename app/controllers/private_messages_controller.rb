@@ -56,7 +56,7 @@ class PrivateMessagesController < ApplicationController
       message.read = true
       message.save
     end
-    redirect_to user_inbox_path
+    redirect_to user_received_path
   end
 
 private

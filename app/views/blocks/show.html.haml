@@ -7,6 +7,6 @@
   %b User:
   = @block.user.name
 
--if current_user.present? && @block.user = current_user
+-if current_user.present? && @block.user == current_user
   = link_to 'Edit', edit_block_path(@block)
 
