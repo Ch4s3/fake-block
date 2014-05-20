@@ -1,9 +1,12 @@
 - unless @user.friends.empty?
-  - @user.friends.each do |u|
-    -# = link_to u.login, user_path(u.id)
-    Since #{u.created_at.to_s(:long)}
-    - if @user = current_user
-      = link_to '[Remove]', user_friend_path(:user_id => current_user, :id => u), :method => :delete, :confirm => 'Are you sure?'
+  %table
+    %tbody
+      - @user.friends.each do |u|
+        %td=link_to "#{u.name}", user_path(u)
+        Since #{u.created_at.to_s(:long)}
+        - if @user = current_user
+          %td
+            = link_to '[Remove]', user_friend_path(:user_id => current_user, :id => u), :method => :delete, :confirm => 'Are you sure?'
 - else
   None
   
